@@ -25,11 +25,25 @@ app.get('/location', function(req,res){
 });
 app.get('/hobbies', function(req,res){
 	res.type('text/plain');
-  	res.send(information.hobbies);
+	res.send(information.hobbies);
+	var order= req.query.order;
+	var sortedHobbies= information.hobbies.sort();	
+	if(order=='desc'){
+		sortedHobbies= sortedHobbies.reverse();
+	}
+	res.send(sortedHobbies);
+		
  });
 app.get('/occupations', function(req,res){
 	res.type('text/plain');
   	res.send(information.occupations);
+  	var order= req.query.order;
+	var sortedOccupations= information.occupations.sort();	
+	if(order=='desc'){
+		sortedOccupations= sortedOccupations.reverse();
+	}
+	res.send(sortedOccupations);
+		
  });
  app.get('/occupations/latest', function(req,res){
  	res.type('text/plain');
